@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useState,useEffect } from 'react';
 import './App.css';
+import { IPokemon } from './models';
+import {getList} from './api/api'
+import PokemonList from './components/PokemonList';
+import { Route, Routes} from 'react-router-dom';
+import PokemonPage from './components/PokemonPage';
+
+
+
 
 function App() {
+  const [pokemonsList, setPokemonsList] = useState<IPokemon[]>([]);
+
+
+
+  useEffect(() => {
+    getList().then((r) => setPokemonsList(r.data.results))
+  }, []);
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<PokemonList pokemonList={pokemonsList} />} />
+        <Route path="/*" element={<PokemonPage /> }/>  
+      </Routes>
+      </>
+    
   );
 }
 

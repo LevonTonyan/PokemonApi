@@ -1,0 +1,39 @@
+.listContainer {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr  3fr ;
+    gap: 10px;
+    
+}
+
+.pokemon {
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    background-color: rgb(205, 201, 153);
+    width: 300px;
+    height: 100px;
+    padding: 15px;
+    margin: auto; 
+}
+
+
+.pokemon img {
+    border-radius:10px;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+}
+
+.pok {
+    border: 1px solid black;
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+    margin:200px auto;
+    border-radius:10px
+}
+
+.pok img {
+    margin:auto
+}
