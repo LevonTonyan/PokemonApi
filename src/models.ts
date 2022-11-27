@@ -1,4 +1,4 @@
-export interface IPokemon { 
+export interface PokemonInList { 
     name: string,
     url:string
 }

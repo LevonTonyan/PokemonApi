@@ -1,20 +1,20 @@
 import React from 'react'
-import { IPokemon } from './../models';
-import pok from './../images/pokemon.png'
+import { PokemonInList } from '../models';
+import pokemonImage from '../images/pokemon.png'
 import { Link } from "react-router-dom";
 import './Pokemon.css'
 
-interface PokemonProps { 
-    data:IPokemon
+interface Props { 
+    data:PokemonInList
 }
 
-const Pokemon = ({data}: PokemonProps) => {
+const Pokemon:React.FC<Props> = ({data}) => {
     let url = data.url.split("/")[6]
 
     return (
         <Link to={url}>
             <div className='pokemon'>              
-                <img src={pok} alt="no" />
+                <img src={pokemonImage} alt="no" />
                 <div>{data.name}</div>
             </div>
         </Link>

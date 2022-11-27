@@ -1,22 +1,22 @@
-import React from 'react'
-import { IPokemon } from './../models';
-import Pokemon from './Pokemon';
-import './Pokemon.css'
+import React from "react";
+import { PokemonInList } from "./../models";
+import Pokemon from "./PokemonItem";
+import "./Pokemon.css";
 
 
+interface Props {
+    pokemonList:PokemonInList[]
+ }
 
 
-const PokemonList = ({pokemonList}:any) => {
-
-
-  
+const PokemonList:React.FC<Props> = ({ pokemonList }) => {
   return (
-      <div className='listContainer'>
-        {pokemonList.map((pokemon:IPokemon, i:number) => { 
-          return <Pokemon data={pokemon} key={ i} />
-        }) }
-      </div>
-    )
-}
+    <div className="listContainer">
+      {pokemonList.map((pokemon: PokemonInList, i: number) => {
+        return <Pokemon data={pokemon} key={i} />;
+      })}
+    </div>
+  );
+};
 
-export default PokemonList
+export default PokemonList;

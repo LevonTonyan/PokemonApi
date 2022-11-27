@@ -1,35 +1,26 @@
-import React from 'react';
-import { useState,useEffect } from 'react';
-import './App.css';
-import { IPokemon } from './models';
-import {getList} from './api/api'
-import PokemonList from './components/PokemonList';
-import { Route, Routes} from 'react-router-dom';
-import PokemonPage from './components/PokemonPage';
-
-
-
+import React from "react";
+import { useState, useEffect } from "react";
+import "./App.css";
+import { PokemonInList } from "./models";
+import { getList } from "./api/api";
+import PokemonList from "./components/PokemonList";
+import { Route, Routes } from "react-router-dom";
+import PokemonPage from "./components/PokemonPage";
 
 function App() {
-  const [pokemonsList, setPokemonsList] = useState<IPokemon[]>([]);
-
-
+  const [pokemonsList, setPokemonsList] = useState([] as PokemonInList[]);
 
   useEffect(() => {
-    getList().then((r) => setPokemonsList(r.data.results))
+    getList().then((r) => setPokemonsList(r.data.results));
   }, []);
-
-
-
 
   return (
     <>
       <Routes>
         <Route path="/" element={<PokemonList pokemonList={pokemonsList} />} />
-        <Route path="/*" element={<PokemonPage /> }/>  
+        <Route path="/*" element={<PokemonPage />} />
       </Routes>
-      </>
-    
+    </>
   );
 }
 
